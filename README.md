@@ -2,7 +2,7 @@
 
 A search interface for Resque failures inside Redis
 
-## Usage
+## Usage from irb
 
 ```
 search = Search.new(host='localhost', port=6379)
@@ -11,6 +11,12 @@ search.ending = DateTime.parse("2014/10/09 00:00:00 UTC")
 search.terms = Regexp.new('foo')
 search.queue = 'QueueName'
 search.run()
+```
+
+## Usage from a terminal
+
+```
+ruby -r ./search -e 's=Search.new();s.run()' | tee /path/to/output
 ```
 
 Returns a collection of search results matching the criteria

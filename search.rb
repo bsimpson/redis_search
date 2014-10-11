@@ -31,7 +31,7 @@ class Search
     perform_keywords if terms
     perform_queue if queue
 
-    PP.pp(self.entries)
+    pp self.entries
   end
 
   def binary_search(val, low=0, high=(max-1))
