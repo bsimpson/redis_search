@@ -6,8 +6,8 @@ A search interface for Resque failures inside Redis
 
 ```
 search = Search.new(host='localhost', port=6379)
-search.starting = DateTime.parse('10/2/2014')
-search.ending = DateTime.parse('10/3/2014')
+search.starting = DateTime.parse("2014/10/09 00:00:00 UTC")
+search.ending = DateTime.parse("2014/10/09 00:00:00 UTC")
 search.terms = Regexp.new('foo')
 search.queue = 'QueueName'
 search.run()

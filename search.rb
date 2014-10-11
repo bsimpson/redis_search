@@ -1,15 +1,16 @@
 require 'resque'
 require 'json'
+require 'pp'
 
 # Usage:
 #   search = Search.new()
-#   search.starting = DateTime.parse('10/2/2014')
-#   search.ending = DateTime.parse('10/3/2014')
+#   search.starting = DateTime.parse("2014/10/09 00:00:00 UTC")
+#   search.ending = DateTime.parse("2014/10/10 00:00:00 UTC")
 #   search.terms = Regexp.new('foo')
 #   search.queue = 'QueueName'
 #   search.run()
 class Search
-  attr_accessor :host, :port, :starting, :ending, :terms, :queue
+  attr_accessor :host, :port, :starting, :ending, :terms, :queue, :entries
 
   def initialize(host='localhost',port=6379)
     self.host = host
@@ -30,7 +31,7 @@ class Search
     perform_keywords if terms
     perform_queue if queue
 
-    self.entries
+    PP.pp(self.entries)
   end
 
   def binary_search(val, low=0, high=(max-1))
@@ -72,11 +73,9 @@ class Search
 
   def calculate_starting
     @offset = binary_search(starting)
-    puts "offset: #{@offset}"
   end
 
   def calculate_ending
     @limit = binary_search(ending)
-    puts "limit: #{@limit}"
   end
 end
