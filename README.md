@@ -15,4 +15,4 @@ search.run()
 
 Returns a collection of search results matching the criteria
 
-Due to the large data sets this can operate on, this will not parse on more than 1000 results matching a search. You will have to narrow the search criteria first.
+Due to the large data sets this can operate on, this will not parse on more than 1000 results matching a search. You will have to narrow the search criteria first by reducing the starting and ending date ranges.
